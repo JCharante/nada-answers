@@ -19,15 +19,13 @@
           <p>{{ answer }}</p>
         </div>
       </div>
-      <div class="col-xs-12 row justify-center">
-        <div class="col-xs-12 col-md-7">
-          <q-field>
-            <q-input v-model="petition" float-label="Petition"/>
-          </q-field>
-        </div>
+      <div class="col-xs-12 col-md-7 row justify-center">
+        <q-field style="width: 100%;">
+          <q-input v-model="petition" float-label="Petition"/>
+        </q-field>
       </div>
-      <div class="col-xs-12 row justify-center">
-        <div class="col-xs-10 col-md-5">
+      <div class="col-xs-12 col-md-7 row justify-center">
+        <div class="col-xs-10 col-md-10">
           <q-field>
             <q-input v-model="question" float-label="Question"/>
           </q-field>
