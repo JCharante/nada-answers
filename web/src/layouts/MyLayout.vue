@@ -14,7 +14,12 @@
           <q-icon name="menu" />
         </q-btn>
 
-        <q-toolbar-title></q-toolbar-title>
+        <q-toolbar-title class="lt-md">
+          Nada Answers
+        </q-toolbar-title>
+        <q-btn flat round color="white">
+          <q-icon name="help"/>
+        </q-btn>
       </q-toolbar>
     </q-layout-header>
 
