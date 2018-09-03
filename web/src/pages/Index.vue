@@ -95,7 +95,7 @@ export default {
   },
   methods: {
     genAnswer () {
-      let responses = ['idk', 'that\'s a pretty weird question to ask', 'try again later', 'umm.. maybe you should go back to studying']
+      let responses = ['idk', 'that\'s a pretty weird question to ask', 'try again later', 'umm.. maybe you should go back to studying', 'Trust and thou shall know.']
       let randomResponse = responses[Math.floor(Math.random() * responses.length)]
       return randomResponse
     },
