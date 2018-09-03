@@ -21,7 +21,7 @@
       <div class="col-xs-12 row justify-center">
         <div class="col-xs-12 col-md-7 col-lg-5 row justify-center not-too-wide">
           <q-field style="width: 100%;">
-            <q-input v-model="petition" float-label="Petition" :disable="answer.length > 0"/>
+            <q-input v-model="petition" @keydown="onKeyDown" float-label="Petition" :disable="answer.length > 0"/>
           </q-field>
         </div>
       </div>
@@ -97,7 +97,7 @@ export default {
     genAnswer () {
       let responses = ['idk', 'that\'s a pretty weird question to ask', 'try again later', 'umm.. maybe you should go back to studying', 'Trust and thou shall know.']
       let randomResponse = responses[Math.floor(Math.random() * responses.length)]
-      return randomResponse
+      return this.hiddenAnswer.length > 0 ? this.hiddenAnswer : randomResponse
     },
     onSend () {
       this.answer = this.genAnswer()
@@ -106,13 +106,52 @@ export default {
       this.answer = ''
       this.petition = ''
       this.question = ''
+      this.hiddenAnswer = ''
+    },
+    // Get the next key in the phrase
+    getNextKey (curLen) {
+      if (curLen < this.primaryPhrase.length) {
+        return this.primaryPhrase.substring(curLen, curLen + 1)
+      } else {
+        return ''
+      }
+    },
+    onKeyDown (e) {
+      let key = e.key
+      let secretModeJustGotToggled = false
+
+      if (key === '.') {
+        this.secretModeToggled = !this.secretModeToggled
+        secretModeJustGotToggled = true
+      }
+
+      if (this.secretModeToggled) {
+        // Cancel Default
+        e.preventDefault()
+
+        // Add the fake letters to petition
+        this.petition = this.petition.concat(this.getNextKey(this.petition.length))
+
+        // Log the entered key into the answer
+        // Only if they are normal characters (not control, not shift), and if the secret mode didn't just get toggled
+        // To avoid adding the initial period
+        if (key.length === 1 && !secretModeJustGotToggled) {
+          this.hiddenAnswer = this.hiddenAnswer.concat(e.key.replace('^[A-Za-z0-9- ]+$', ''))
+        }
+      } else if (!this.secretModeToggled && secretModeJustGotToggled) {
+        // If secret mode just got turn off, then don't add the period to the petition
+        e.preventDefault()
+      }
     }
   },
   data () {
     return {
       petition: '',
       question: '',
-      answer: ''
+      answer: '',
+      hiddenAnswer: '',
+      secretModeToggled: false,
+      primaryPhrase: 'Nada please answer the following question'
     }
   }
 }
