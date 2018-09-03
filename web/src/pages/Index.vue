@@ -2,9 +2,9 @@
   <q-page>
     <div class="red row justify-center" id="banner">
       <div class="col-xs-12 text-white gt-sm">
-        <h3 class="text-center">💩 Nada Answers</h3>
+        <h3 class="text-center" style="margin-top: 0;">💩 Nada Answers</h3>
       </div>
-      <div class="col-xs-12 col-md-7 col-lg-5 text-white not-too-wide" id="pad-me-when-lt-md" style="padding-bottom: 16px;" v-if="answer.length === 0">
+      <div class="col-xs-12 col-md-7 col-lg-5 text-white not-too-wide pad-me-when-lt-md" style="padding-bottom: 16px;" v-if="answer.length === 0">
         <p>
           Welcome to Nada Answers...
         </p>
@@ -12,7 +12,7 @@
           Do you need to ask a question? Are you looking for answers? Nada offers you a space to ask anything you want. However, before each question you must write a petition. If the answer is not what you expected, at least you make catharsis and ask again. Or you know, you stop procrastinating and get back to studying.
         </p>
       </div>
-      <div class="col-xs-12 col-md-7 col-lg-5 text-white not-too-wide" id="pad-me-when-lt-md" style="padding-bottom: 16px;" v-if="answer.length > 0">
+      <div class="col-xs-12 col-md-7 col-lg-5 text-white not-too-wide pad-me-when-lt-md" style="padding-bottom: 16px;" v-if="answer.length > 0">
         <p>Nada answers:</p>
         <p style="font-size: 24px;">{{ answer }}</p>
       </div>
@@ -21,7 +21,7 @@
       <div class="col-xs-12 row justify-center">
         <div class="col-xs-12 col-md-7 col-lg-5 row justify-center not-too-wide">
           <q-field style="width: 100%;">
-            <q-input v-model="petition" float-label="Petition"/>
+            <q-input v-model="petition" float-label="Petition" :disable="answer.length > 0"/>
           </q-field>
         </div>
       </div>
@@ -29,12 +29,14 @@
         <div class="col-xs-12 col-md-7 col-lg-5 row justify-center not-too-wide">
           <div class="col-xs-10 col-md-10 col-lg-10">
             <q-field>
-              <q-input v-model="question" float-label="Question"/>
+              <q-input v-model="question" float-label="Question" :disable="answer.length > 0"/>
             </q-field>
           </div>
           <div class="col-xs-2 col-md-2 col-lg-2 row justify-end items-center">
-            <q-btn class="lt-md" icon="send" color="primary" flat @click="onSend()"/>
-            <q-btn class="gt-sm" icon="send" color="primary" label="SEND" flat @click="onSend()"/>
+            <q-btn class="lt-md" icon="send" color="primary" flat @click="onSend()" v-if="answer.length === 0"/>
+            <q-btn class="gt-sm" icon="send" color="primary" label="SEND" flat @click="onSend()" v-if="answer.length === 0"/>
+            <q-btn class="lt-md" icon="add" color="primary" flat @click="onNew()" v-if="answer.length > 0"/>
+            <q-btn class="gt-sm" icon="add" color="primary" label="NEW" flat @click="onNew()" v-if="answer.length > 0"/>
           </div>
         </div>
       </div>
@@ -71,7 +73,7 @@
   //max-width: 90vw;
 
 @media only screen and (max-width: 768px) {
-  #pad-me-when-lt-md {
+  .pad-me-when-lt-md {
     padding-top: 16px;
   }
 }
@@ -99,6 +101,11 @@ export default {
     },
     onSend () {
       this.answer = this.genAnswer()
+    },
+    onNew () {
+      this.answer = ''
+      this.petition = ''
+      this.question = ''
     }
   },
   data () {
