@@ -36,6 +36,18 @@
         </div>
       </div>
     </div>
+    <div class="row justify-center items-center content-center" style="padding-top: 15vh;">
+      <div class="col-xs-12 col-md-7" style="max-width: 90vw;">
+        <q-card style="width: 100%">
+          <q-card-main>
+            <blockquote>
+              We are not permitted to choose the frame of our destiny. But what we put into it is ours.
+              <small><cite>Dag Hammarskjöld</cite></small>
+            </blockquote>
+          </q-card-main>
+        </q-card>
+      </div>
+    </div>
   </q-page>
 </template>
 
