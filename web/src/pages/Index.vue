@@ -4,7 +4,7 @@
       <div class="col-xs-12 text-white gt-sm">
         <h3 class="text-center">💩 Nada Answers</h3>
       </div>
-      <div class="col-xs-12 col-md-7 text-white" id="pad-me-when-lt-md">
+      <div class="col-xs-12 col-md-7 col-lg-5 text-white not-too-wide" id="pad-me-when-lt-md" style="padding-bottom: 16px;">
         <p>
           Welcome to Nada Answers...
         </p>
@@ -15,29 +15,33 @@
     </div>
     <div class="row justify-center items-center content-center" id="notbanner">
       <div class="col-xs-12 row justify-center">
-        <div class="col-xs-12 col-md-7" v-if="answer.length > 0">
+        <div class="col-xs-12 col-md-7 col-lg-5 not-too-wide" v-if="answer.length > 0">
           <p>{{ answer }}</p>
         </div>
       </div>
-      <div class="col-xs-12 col-md-7 row justify-center">
-        <q-field style="width: 100%;">
-          <q-input v-model="petition" float-label="Petition"/>
-        </q-field>
-      </div>
-      <div class="col-xs-12 col-md-7 row justify-center">
-        <div class="col-xs-10 col-md-10">
-          <q-field>
-            <q-input v-model="question" float-label="Question"/>
+      <div class="col-xs-12 row justify-center">
+        <div class="col-xs-12 col-md-7 col-lg-5 row justify-center not-too-wide">
+          <q-field style="width: 100%;">
+            <q-input v-model="petition" float-label="Petition"/>
           </q-field>
         </div>
-        <div class="col-xs-2 col-md-2 row justify-end items-center">
-          <q-btn class="lt-md" icon="send" color="primary" flat @click="onSend()"/>
-          <q-btn class="gt-sm" icon="send" color="primary" label="SEND" flat @click="onSend()"/>
+      </div>
+      <div class="col-xs-12 row justify-center">
+        <div class="col-xs-12 col-md-7 col-lg-5 row justify-center not-too-wide">
+          <div class="col-xs-10 col-md-10 col-lg-10">
+            <q-field>
+              <q-input v-model="question" float-label="Question"/>
+            </q-field>
+          </div>
+          <div class="col-xs-2 col-md-2 col-lg-2 row justify-end items-center">
+            <q-btn class="lt-md" icon="send" color="primary" flat @click="onSend()"/>
+            <q-btn class="gt-sm" icon="send" color="primary" label="SEND" flat @click="onSend()"/>
+          </div>
         </div>
       </div>
     </div>
     <div class="row justify-center items-center content-center" style="padding-top: 15vh;">
-      <div class="col-xs-12 col-md-7" style="max-width: 90vw;">
+      <div class="col-xs-12 col-md-7 col-lg-5 not-too-wide">
         <q-card style="width: 100%">
           <q-card-main>
             <blockquote>
@@ -56,13 +60,16 @@
   background-color: #a40000;
   width: 100%;
 
+.not-too-wide
+  max-width: 90vw;
+
 #banner div
   //padding-left: 16px;
   //padding-right: 16px;
-  max-width: 90vw;
+  //max-width: 90vw;
 
 #notbanner div
-  max-width: 90vw;
+  //max-width: 90vw;
 
 @media only screen and (max-width: 768px) {
   #pad-me-when-lt-md {

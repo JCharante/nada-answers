@@ -14,6 +14,8 @@
           <q-icon name="menu" />
         </q-btn>
 
+        <q-toolbar-title class="gt-sm"></q-toolbar-title>
+
         <q-toolbar-title class="lt-md">
           Nada Answers
         </q-toolbar-title>
