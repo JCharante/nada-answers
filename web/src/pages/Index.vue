@@ -4,7 +4,7 @@
       <div class="col-xs-12 text-white gt-sm">
         <h3 class="text-center">💩 Nada Answers</h3>
       </div>
-      <div class="col-xs-12 col-md-7 col-lg-5 text-white not-too-wide" id="pad-me-when-lt-md" style="padding-bottom: 16px;">
+      <div class="col-xs-12 col-md-7 col-lg-5 text-white not-too-wide" id="pad-me-when-lt-md" style="padding-bottom: 16px;" v-if="answer.length === 0">
         <p>
           Welcome to Nada Answers...
         </p>
@@ -12,13 +12,12 @@
           Do you need to ask a question? Are you looking for answers? Nada offers you a space to ask anything you want. However, before each question you must write a petition. If the answer is not what you expected, at least you make catharsis and ask again. Or you know, you stop procrastinating and get back to studying.
         </p>
       </div>
+      <div class="col-xs-12 col-md-7 col-lg-5 text-white not-too-wide" id="pad-me-when-lt-md" style="padding-bottom: 16px;" v-if="answer.length > 0">
+        <p>Nada answers:</p>
+        <p style="font-size: 24px;">{{ answer }}</p>
+      </div>
     </div>
     <div class="row justify-center items-center content-center" id="notbanner">
-      <div class="col-xs-12 row justify-center">
-        <div class="col-xs-12 col-md-7 col-lg-5 not-too-wide" v-if="answer.length > 0">
-          <p>{{ answer }}</p>
-        </div>
-      </div>
       <div class="col-xs-12 row justify-center">
         <div class="col-xs-12 col-md-7 col-lg-5 row justify-center not-too-wide">
           <q-field style="width: 100%;">
