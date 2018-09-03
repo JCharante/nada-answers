@@ -8,6 +8,7 @@
           flat
           dense
           round
+          size="lg"
           @click="leftDrawerOpen = !leftDrawerOpen"
           aria-label="Menu"
         >
@@ -19,7 +20,7 @@
         <q-toolbar-title class="lt-md">
           Nada Answers
         </q-toolbar-title>
-        <q-btn flat round color="white">
+        <q-btn flat round color="white" size="lg">
           <q-icon name="help"/>
         </q-btn>
       </q-toolbar>
