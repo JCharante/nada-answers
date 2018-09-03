@@ -2,7 +2,7 @@
   "name": "web",
   "version": "1.0.0",
   "description": "A Quasar Framework app",
-  "productName": "Nada Answers",
+  "productName": "Nada Answers - Virtual Tarot",
   "cordovaId": "org.cordova.quasar.app",
   "author": "",
   "private": true,
